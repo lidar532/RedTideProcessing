@@ -1,0 +1,1528 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.361">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Fill in a module description here">
+
+<title>RedTideProcessing</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+<link rel="stylesheet" href="styles.css">
+<meta property="og:title" content="RedTideProcessing">
+<meta property="og:description" content="Fill in a module description here">
+<meta property="og:site-name" content="RedTideProcessing">
+<meta name="twitter:title" content="RedTideProcessing">
+<meta name="twitter:description" content="Fill in a module description here">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">RedTideProcessing</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools ms-auto">
+</div>
+          <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./redtideprocessing.html">RedTideProcessing</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">RedTideProcessing</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./redtideprocessing.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">RedTideProcessing</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./hab_process.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Colabs Online Processing for HABSpec</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#functions" id="toc-functions" class="nav-link active" data-scroll-target="#functions">Functions</a>
+  <ul class="collapse">
+  <li><a href="#general-purpose-datetime-functions" id="toc-general-purpose-datetime-functions" class="nav-link" data-scroll-target="#general-purpose-datetime-functions">General Purpose datetime Functions</a></li>
+  <li><a href="#hhmmss_to_sod" id="toc-hhmmss_to_sod" class="nav-link" data-scroll-target="#hhmmss_to_sod">hhmmss_to_sod</a></li>
+  <li><a href="#now_utc" id="toc-now_utc" class="nav-link" data-scroll-target="#now_utc">now_utc</a></li>
+  <li><a href="#hms2sod" id="toc-hms2sod" class="nav-link" data-scroll-target="#hms2sod">hms2sod</a></li>
+  <li><a href="#extract_hms" id="toc-extract_hms" class="nav-link" data-scroll-target="#extract_hms">extract_hms</a></li>
+  <li><a href="#habspec-functions" id="toc-habspec-functions" class="nav-link" data-scroll-target="#habspec-functions">HABSpec Functions</a></li>
+  <li><a href="#configure_json_spectra" id="toc-configure_json_spectra" class="nav-link" data-scroll-target="#configure_json_spectra">configure_json_spectra</a></li>
+  <li><a href="#calibrate_using_2_wavelengths" id="toc-calibrate_using_2_wavelengths" class="nav-link" data-scroll-target="#calibrate_using_2_wavelengths">calibrate_using_2_wavelengths</a></li>
+  <li><a href="#read_spectra" id="toc-read_spectra" class="nav-link" data-scroll-target="#read_spectra">read_spectra</a></li>
+  <li><a href="#nearest_rgb_image" id="toc-nearest_rgb_image" class="nav-link" data-scroll-target="#nearest_rgb_image">nearest_rgb_image</a></li>
+  <li><a href="#get_list_of_json_spectra" id="toc-get_list_of_json_spectra" class="nav-link" data-scroll-target="#get_list_of_json_spectra">get_list_of_json_spectra</a></li>
+  <li><a href="#json_specs_to_df" id="toc-json_specs_to_df" class="nav-link" data-scroll-target="#json_specs_to_df">json_specs_to_df</a></li>
+  <li><a href="#read_gps_file_to_df" id="toc-read_gps_file_to_df" class="nav-link" data-scroll-target="#read_gps_file_to_df">read_gps_file_to_df</a></li>
+  <li><a href="#compute_gps_positions" id="toc-compute_gps_positions" class="nav-link" data-scroll-target="#compute_gps_positions">compute_gps_positions</a></li>
+  <li><a href="#get_bearing" id="toc-get_bearing" class="nav-link" data-scroll-target="#get_bearing">get_bearing</a></li>
+  <li><a href="#w_range_pixels" id="toc-w_range_pixels" class="nav-link" data-scroll-target="#w_range_pixels">w_range_pixels</a></li>
+  <li><a href="#get_fluorescence" id="toc-get_fluorescence" class="nav-link" data-scroll-target="#get_fluorescence">get_fluorescence</a></li>
+  <li><a href="#get_fluorescence_700" id="toc-get_fluorescence_700" class="nav-link" data-scroll-target="#get_fluorescence_700">get_fluorescence_700</a></li>
+  <li><a href="#get_fluorescence_683" id="toc-get_fluorescence_683" class="nav-link" data-scroll-target="#get_fluorescence_683">get_fluorescence_683</a></li>
+  <li><a href="#is_water" id="toc-is_water" class="nav-link" data-scroll-target="#is_water">is_water</a></li>
+  <li><a href="#get_list_of_flight_lines" id="toc-get_list_of_flight_lines" class="nav-link" data-scroll-target="#get_list_of_flight_lines">get_list_of_flight_lines</a></li>
+  <li><a href="#get_list_of_hab_files" id="toc-get_list_of_hab_files" class="nav-link" data-scroll-target="#get_list_of_hab_files">get_list_of_hab_files</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/lidar532/RedTideProcessing/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">RedTideProcessing</h1>
+</div>
+
+<div>
+  <div class="description">
+    Fill in a module description here
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<!-- WARNING: THIS FILE WAS AUTOGENERATED! DO NOT EDIT! -->
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">## from google.colab.patches   import cv2_imshow # for image display</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> panel <span class="im">as</span> pn</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bokeh.plotting <span class="im">import</span> figure, show </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bokeh.io <span class="im">import</span> show, output_notebook</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>output_notebook()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<style>
+        .bk-notebook-logo {
+            display: block;
+            width: 20px;
+            height: 20px;
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAOkSURBVDiNjZRtaJVlGMd/1/08zzln5zjP1LWcU9N0NkN8m2CYjpgQYQXqSs0I84OLIC0hkEKoPtiH3gmKoiJDU7QpLgoLjLIQCpEsNJ1vqUOdO7ppbuec5+V+rj4ctwzd8IIbbi6u+8f1539dt3A78eXC7QizUF7gyV1fD1Yqg4JWz84yffhm0qkFqBogB9rM8tZdtwVsPUhWhGcFJngGeWrPzHm5oaMmkfEg1usvLFyc8jLRqDOMru7AyC8saQr7GG7f5fvDeH7Ej8CM66nIF+8yngt6HWaKh7k49Soy9nXurCi1o3qUbS3zWfrYeQDTB/Qj6kX6Ybhw4B+bOYoLKCC9H3Nu/leUTZ1JdRWkkn2ldcCamzrcf47KKXdAJllSlxAOkRgyHsGC/zRday5Qld9DyoM4/q/rUoy/CXh3jzOu3bHUVZeU+DEn8FInkPBFlu3+nW3Nw0mk6vCDiWg8CeJaxEwuHS3+z5RgY+YBR6V1Z1nxSOfoaPa4LASWxxdNp+VWTk7+4vzaou8v8PN+xo+KY2xsw6une2frhw05CTYOmQvsEhjhWjn0bmXPjpE1+kplmmkP3suftwTubK9Vq22qKmrBhpY4jvd5afdRA3wGjFAgcnTK2s4hY0/GPNIb0nErGMCRxWOOX64Z8RAC4oCXdklmEvcL8o0BfkNK4lUg9HTl+oPlQxdNo3Mg4Nv175e/1LDGzZen30MEjRUtmXSfiTVu1kK8W4txyV6BMKlbgk3lMwYCiusNy9fVfvvwMxv8Ynl6vxoByANLTWplvuj/nF9m2+PDtt1eiHPBr1oIfhCChQMBw6Aw0UulqTKZdfVvfG7VcfIqLG9bcldL/+pdWTLxLUy8Qq38heUIjh4XlzZxzQm19lLFlr8vdQ97rjZVOLf8nclzckbcD4wxXMidpX30sFd37Fv/GtwwhzhxGVAprjbg0gCAEeIgwCZyTV2Z1REEW8O4py0wsjeloKoMr6iCY6dP92H6Vw/oTyICIthibxjm/DfN9lVz8IqtqKYLUXfoKVMVQVVJOElGjrnnUt9T9wbgp8AyYKaGlqingHZU/uG2NTZSVqwHQTWkx9hxjkpWDaCg6Ckj5qebgBVbT3V3NNXMSiWSDdGV3hrtzla7J+duwPOToIg42ChPQOQjspnSlp1V+Gjdged7+8UN5CRAV7a5EdFNwCjEaBR27b3W890TE7g24NAP/mMDXRWrGoFPQI9ls/MWO2dWFAar/xcOIImbbpA3zgAAAABJRU5ErkJggg==);
+        }
+    </style>
+    <div>
+        <a href="https://bokeh.org" target="_blank" class="bk-notebook-logo"></a>
+        <span id="f7c134f3-8c68-4c38-9e8c-60a3f2c22e52">Loading BokehJS ...</span>
+    </div>
+</div>
+<div class="cell-output cell-output-display">
+
+<script type="application/javascript">
+(function(root) {
+  function now() {
+    return new Date();
+  }
+
+  const force = true;
+
+  if (typeof root._bokeh_onload_callbacks === "undefined" || force === true) {
+    root._bokeh_onload_callbacks = [];
+    root._bokeh_is_loading = undefined;
+  }
+
+const JS_MIME_TYPE = 'application/javascript';
+  const HTML_MIME_TYPE = 'text/html';
+  const EXEC_MIME_TYPE = 'application/vnd.bokehjs_exec.v0+json';
+  const CLASS_NAME = 'output_bokeh rendered_html';
+
+  /**
+   * Render data to the DOM node
+   */
+  function render(props, node) {
+    const script = document.createElement("script");
+    node.appendChild(script);
+  }
+
+  /**
+   * Handle when an output is cleared or removed
+   */
+  function handleClearOutput(event, handle) {
+    const cell = handle.cell;
+
+    const id = cell.output_area._bokeh_element_id;
+    const server_id = cell.output_area._bokeh_server_id;
+    // Clean up Bokeh references
+    if (id != null && id in Bokeh.index) {
+      Bokeh.index[id].model.document.clear();
+      delete Bokeh.index[id];
+    }
+
+    if (server_id !== undefined) {
+      // Clean up Bokeh references
+      const cmd_clean = "from bokeh.io.state import curstate; print(curstate().uuid_to_server['" + server_id + "'].get_sessions()[0].document.roots[0]._id)";
+      cell.notebook.kernel.execute(cmd_clean, {
+        iopub: {
+          output: function(msg) {
+            const id = msg.content.text.trim();
+            if (id in Bokeh.index) {
+              Bokeh.index[id].model.document.clear();
+              delete Bokeh.index[id];
+            }
+          }
+        }
+      });
+      // Destroy server and session
+      const cmd_destroy = "import bokeh.io.notebook as ion; ion.destroy_server('" + server_id + "')";
+      cell.notebook.kernel.execute(cmd_destroy);
+    }
+  }
+
+  /**
+   * Handle when a new output is added
+   */
+  function handleAddOutput(event, handle) {
+    const output_area = handle.output_area;
+    const output = handle.output;
+
+    // limit handleAddOutput to display_data with EXEC_MIME_TYPE content only
+    if ((output.output_type != "display_data") || (!Object.prototype.hasOwnProperty.call(output.data, EXEC_MIME_TYPE))) {
+      return
+    }
+
+    const toinsert = output_area.element.find("." + CLASS_NAME.split(' ')[0]);
+
+    if (output.metadata[EXEC_MIME_TYPE]["id"] !== undefined) {
+      toinsert[toinsert.length - 1].firstChild.textContent = output.data[JS_MIME_TYPE];
+      // store reference to embed id on output_area
+      output_area._bokeh_element_id = output.metadata[EXEC_MIME_TYPE]["id"];
+    }
+    if (output.metadata[EXEC_MIME_TYPE]["server_id"] !== undefined) {
+      const bk_div = document.createElement("div");
+      bk_div.innerHTML = output.data[HTML_MIME_TYPE];
+      const script_attrs = bk_div.children[0].attributes;
+      for (let i = 0; i < script_attrs.length; i++) {
+        toinsert[toinsert.length - 1].firstChild.setAttribute(script_attrs[i].name, script_attrs[i].value);
+        toinsert[toinsert.length - 1].firstChild.textContent = bk_div.children[0].textContent
+      }
+      // store reference to server id on output_area
+      output_area._bokeh_server_id = output.metadata[EXEC_MIME_TYPE]["server_id"];
+    }
+  }
+
+  function register_renderer(events, OutputArea) {
+
+    function append_mime(data, metadata, element) {
+      // create a DOM node to render to
+      const toinsert = this.create_output_subarea(
+        metadata,
+        CLASS_NAME,
+        EXEC_MIME_TYPE
+      );
+      this.keyboard_manager.register_events(toinsert);
+      // Render to node
+      const props = {data: data, metadata: metadata[EXEC_MIME_TYPE]};
+      render(props, toinsert[toinsert.length - 1]);
+      element.append(toinsert);
+      return toinsert
+    }
+
+    /* Handle when an output is cleared or removed */
+    events.on('clear_output.CodeCell', handleClearOutput);
+    events.on('delete.Cell', handleClearOutput);
+
+    /* Handle when a new output is added */
+    events.on('output_added.OutputArea', handleAddOutput);
+
+    /**
+     * Register the mime type and append_mime function with output_area
+     */
+    OutputArea.prototype.register_mime_type(EXEC_MIME_TYPE, append_mime, {
+      /* Is output safe? */
+      safe: true,
+      /* Index of renderer in `output_area.display_order` */
+      index: 0
+    });
+  }
+
+  // register the mime type if in Jupyter Notebook environment and previously unregistered
+  if (root.Jupyter !== undefined) {
+    const events = require('base/js/events');
+    const OutputArea = require('notebook/js/outputarea').OutputArea;
+
+    if (OutputArea.prototype.mime_types().indexOf(EXEC_MIME_TYPE) == -1) {
+      register_renderer(events, OutputArea);
+    }
+  }
+  if (typeof (root._bokeh_timeout) === "undefined" || force === true) {
+    root._bokeh_timeout = Date.now() + 5000;
+    root._bokeh_failed_load = false;
+  }
+
+  const NB_LOAD_WARNING = {'data': {'text/html':
+     "<div style='background-color: #fdd'>\n"+
+     "<p>\n"+
+     "BokehJS does not appear to have successfully loaded. If loading BokehJS from CDN, this \n"+
+     "may be due to a slow or bad network connection. Possible fixes:\n"+
+     "</p>\n"+
+     "<ul>\n"+
+     "<li>re-rerun `output_notebook()` to attempt to load from CDN again, or</li>\n"+
+     "<li>use INLINE resources instead, as so:</li>\n"+
+     "</ul>\n"+
+     "<code>\n"+
+     "from bokeh.resources import INLINE\n"+
+     "output_notebook(resources=INLINE)\n"+
+     "</code>\n"+
+     "</div>"}};
+
+  function display_loaded() {
+    const el = document.getElementById("f7c134f3-8c68-4c38-9e8c-60a3f2c22e52");
+    if (el != null) {
+      el.textContent = "BokehJS is loading...";
+    }
+    if (root.Bokeh !== undefined) {
+      if (el != null) {
+        el.textContent = "BokehJS " + root.Bokeh.version + " successfully loaded.";
+      }
+    } else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(display_loaded, 100)
+    }
+  }
+
+  function run_callbacks() {
+    try {
+      root._bokeh_onload_callbacks.forEach(function(callback) {
+        if (callback != null)
+          callback();
+      });
+    } finally {
+      delete root._bokeh_onload_callbacks
+    }
+    console.debug("Bokeh: all callbacks have finished");
+  }
+
+  function load_libs(css_urls, js_urls, callback) {
+    if (css_urls == null) css_urls = [];
+    if (js_urls == null) js_urls = [];
+
+    root._bokeh_onload_callbacks.push(callback);
+    if (root._bokeh_is_loading > 0) {
+      console.debug("Bokeh: BokehJS is being loaded, scheduling callback at", now());
+      return null;
+    }
+    if (js_urls == null || js_urls.length === 0) {
+      run_callbacks();
+      return null;
+    }
+    console.debug("Bokeh: BokehJS not loaded, scheduling load and callback at", now());
+    root._bokeh_is_loading = css_urls.length + js_urls.length;
+
+    function on_load() {
+      root._bokeh_is_loading--;
+      if (root._bokeh_is_loading === 0) {
+        console.debug("Bokeh: all BokehJS libraries/stylesheets loaded");
+        run_callbacks()
+      }
+    }
+
+    function on_error(url) {
+      console.error("failed to load " + url);
+    }
+
+    for (let i = 0; i < css_urls.length; i++) {
+      const url = css_urls[i];
+      const element = document.createElement("link");
+      element.onload = on_load;
+      element.onerror = on_error.bind(null, url);
+      element.rel = "stylesheet";
+      element.type = "text/css";
+      element.href = url;
+      console.debug("Bokeh: injecting link tag for BokehJS stylesheet: ", url);
+      document.body.appendChild(element);
+    }
+
+    for (let i = 0; i < js_urls.length; i++) {
+      const url = js_urls[i];
+      const element = document.createElement('script');
+      element.onload = on_load;
+      element.onerror = on_error.bind(null, url);
+      element.async = false;
+      element.src = url;
+      console.debug("Bokeh: injecting script tag for BokehJS library: ", url);
+      document.head.appendChild(element);
+    }
+  };
+
+  function inject_raw_css(css) {
+    const element = document.createElement("style");
+    element.appendChild(document.createTextNode(css));
+    document.body.appendChild(element);
+  }
+
+  const js_urls = ["https://cdn.bokeh.org/bokeh/release/bokeh-3.1.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-gl-3.1.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.1.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-tables-3.1.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-mathjax-3.1.1.min.js", "https://unpkg.com/@holoviz/panel@1.1.0/dist/panel.min.js"];
+  const css_urls = [];
+
+  const inline_js = [    function(Bokeh) {
+      Bokeh.set_log_level("info");
+    },
+function(Bokeh) {
+    }
+  ];
+
+  function run_inline_js() {
+    if (root.Bokeh !== undefined || force === true) {
+          for (let i = 0; i < inline_js.length; i++) {
+      inline_js[i].call(root, root.Bokeh);
+    }
+if (force === true) {
+        display_loaded();
+      }} else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(run_inline_js, 100);
+    } else if (!root._bokeh_failed_load) {
+      console.log("Bokeh: BokehJS failed to load within specified timeout.");
+      root._bokeh_failed_load = true;
+    } else if (force !== true) {
+      const cell = $(document.getElementById("f7c134f3-8c68-4c38-9e8c-60a3f2c22e52")).parents('.cell').data().cell;
+      cell.output_area.append_execute_result(NB_LOAD_WARNING)
+    }
+  }
+
+  if (root._bokeh_is_loading === 0) {
+    console.debug("Bokeh: BokehJS loaded, going straight to plotting");
+    run_inline_js();
+  } else {
+    load_libs(css_urls, js_urls, function() {
+      console.debug("Bokeh: BokehJS plotting callback run at", now());
+      run_inline_js();
+    });
+  }
+}(window));
+</script>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>Gps_File_Name <span class="op">=</span> <span class="st">'/mnt/f/My Drive/Missions/2021-1208-HAB-Lake-Parker/'</span>\</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                <span class="st">'2021-1208/2021-1208-175324-910850-mission-gps.txt'</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>mission_folder <span class="op">=</span> <span class="st">'/mnt/s/2021-0717-HAB-Spec-Tampa-Bay-PIE/2021-0717-HAB-pie/'</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>Gps_File_Name <span class="op">=</span> <span class="st">"/mnt/s/2021-0717-HAB-Spec-Tampa-Bay-PIE/2021-0717-HAB-pie/2021-0717-044645-687230-mission-gps.txt"</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>test_spectra_file <span class="op">=</span> mission_folder<span class="op">+</span><span class="st">'/160206/hab_spectra/2021-0717-160401-066388-spec.json'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="functions" class="level2">
+<h2 class="anchored" data-anchor-id="functions">Functions</h2>
+<section id="general-purpose-datetime-functions" class="level3">
+<h3 class="anchored" data-anchor-id="general-purpose-datetime-functions">General Purpose datetime Functions</h3>
+<section id="def-hhmmss_to_sod-hhmmss-usecs0" class="level4">
+<h4 class="anchored" data-anchor-id="def-hhmmss_to_sod-hhmmss-usecs0">def hhmmss_to_sod( hhmmss, Usecs=0):</h4>
+<pre><code>/home/wright/miniconda3/envs/dss7/lib/python3.11/site-packages/fastcore/docscrape.py:225: UserWarning: Unknown section Parameters:
+  else: warn(msg)
+/home/wright/miniconda3/envs/dss7/lib/python3.11/site-packages/fastcore/docscrape.py:225: UserWarning: Unknown section Returns:
+  else: warn(msg)
+/home/wright/miniconda3/envs/dss7/lib/python3.11/site-packages/fastcore/docscrape.py:225: UserWarning: Unknown section Description:
+  else: warn(msg)
+/home/wright/miniconda3/envs/dss7/lib/python3.11/site-packages/fastcore/docscrape.py:225: UserWarning: Unknown section Examples:
+  else: warn(msg)</code></pre>
+<hr>
+</section>
+</section>
+<section id="hhmmss_to_sod" class="level3">
+<h3 class="anchored" data-anchor-id="hhmmss_to_sod">hhmmss_to_sod</h3>
+<blockquote class="blockquote">
+<pre><code> hhmmss_to_sod (hhmmss, Usecs=0)</code></pre>
+</blockquote>
+<p>Converts a time string in ‘HHMMSS’ format to a seconds-of-the-day including an optional microseconds fraction.</p>
+<section id="def-now_utc-fmty-md-hms" class="level4">
+<h4 class="anchored" data-anchor-id="def-now_utc-fmty-md-hms">def now_utc( fmt=‘%Y-%m%d %H:%M:%S’):</h4>
+<hr>
+</section>
+</section>
+<section id="now_utc" class="level3">
+<h3 class="anchored" data-anchor-id="now_utc">now_utc</h3>
+<blockquote class="blockquote">
+<pre><code> now_utc (fmt='%Y-%m%d %H:%M:%S')</code></pre>
+</blockquote>
+<p>Return the current UTC date and time as a string. Example return: ‘2021-0812 15:39:41’. See: http://shorturl.at/koOQ7 for timeformat options &amp; directives.</p>
+<section id="def-hms2sod-str-debugfalse" class="level4">
+<h4 class="anchored" data-anchor-id="def-hms2sod-str-debugfalse">def hms2sod( str, debug=False):</h4>
+<hr>
+</section>
+</section>
+<section id="hms2sod" class="level3">
+<h3 class="anchored" data-anchor-id="hms2sod">hms2sod</h3>
+<blockquote class="blockquote">
+<pre><code> hms2sod (str, debug=False)</code></pre>
+</blockquote>
+<p>Converts an ASCII string in the form ‘HH:MM”SS’ to seconds of the day. Works with fractional seconds.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">Testing: hms2sod( t )'</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>tt <span class="op">=</span> [<span class="st">'00:00:00'</span>,   <span class="st">'23:59:59'</span>, <span class="st">'12:00:00'</span>,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>      <span class="st">'00:00:00.0'</span>, <span class="st">'0:0:0.0'</span>, <span class="st">'0:0:0'</span> ]</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Time Str       Seconds of Day</span><span class="ch">\n</span><span class="st">'</span>\</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>       <span class="st">'-----------------------------'</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> t <span class="kw">in</span> tt:</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  rv <span class="op">=</span> hms2sod( t )</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span>t<span class="sc">:16}</span><span class="ss"> </span><span class="sc">{</span>rv<span class="sc">:12.6f}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Testing: hms2sod( t )
+Time Str       Seconds of Day
+-----------------------------
+00:00:00             0.000000
+23:59:59         86399.000000
+12:00:00         43200.000000
+00:00:00.0           0.000000
+0:0:0.0              0.000000
+0:0:0                0.000000</code></pre>
+</div>
+</div>
+<section id="def-extract_hms-fn" class="level4">
+<h4 class="anchored" data-anchor-id="def-extract_hms-fn">def extract_hms( fn):</h4>
+<hr>
+</section>
+</section>
+<section id="extract_hms" class="level3">
+<h3 class="anchored" data-anchor-id="extract_hms">extract_hms</h3>
+<blockquote class="blockquote">
+<pre><code> extract_hms (fn)</code></pre>
+</blockquote>
+<p>Extract the HHMMSS and Fsecs strings from filename “fn”</p>
+</section>
+<section id="habspec-functions" class="level3">
+<h3 class="anchored" data-anchor-id="habspec-functions">HABSpec Functions</h3>
+<hr>
+</section>
+<section id="configure_json_spectra" class="level3">
+<h3 class="anchored" data-anchor-id="configure_json_spectra">configure_json_spectra</h3>
+<blockquote class="blockquote">
+<pre><code> configure_json_spectra (f:str)</code></pre>
+</blockquote>
+<p>Configures HabSpec internal setting according to settings within json file ‘f’.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f</td>
+<td>str</td>
+<td>Json settings file.</td>
+</tr>
+<tr class="even">
+<td><strong>Returns</strong></td>
+<td><strong>str</strong></td>
+<td><strong>Returns the Json file name.</strong></td>
+</tr>
+</tbody>
+</table>
+<section id="def-calibrate_using_2_wavelengths" class="level4">
+<h4 class="anchored" data-anchor-id="def-calibrate_using_2_wavelengths">def calibrate_using_2_wavelengths()</h4>
+<pre><code>/home/wright/miniconda3/envs/dss7/lib/python3.11/site-packages/fastcore/docscrape.py:225: UserWarning: potentially wrong underline length... 
+Example: 
+--------- in 
+Generate a Numpy array of calibration wavelenghts for each pixel. configure_json_spectra(f)
+must be called beforehand inrder to set the correct number of pixels....
+  else: warn(msg)
+/home/wright/miniconda3/envs/dss7/lib/python3.11/site-packages/fastcore/docscrape.py:225: UserWarning: Unknown section Example:
+  else: warn(msg)
+/home/wright/miniconda3/envs/dss7/lib/python3.11/site-packages/fastcore/docscrape.py:225: UserWarning: Unknown section References:
+  else: warn(msg)</code></pre>
+<hr>
+</section>
+</section>
+<section id="calibrate_using_2_wavelengths" class="level3">
+<h3 class="anchored" data-anchor-id="calibrate_using_2_wavelengths">calibrate_using_2_wavelengths</h3>
+<blockquote class="blockquote">
+<pre><code> calibrate_using_2_wavelengths (pixel0:int=0, wavelength0:float=0,
+                                pixel1:int=0, wavelength1:float=0)</code></pre>
+</blockquote>
+<p>Generate a Numpy array of calibration wavelenghts for each pixel. configure_json_spectra(f) must be called beforehand inrder to set the correct number of pixels.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>pixel0</td>
+<td>int</td>
+<td>0</td>
+<td>pixel # for Wavelength 0</td>
+</tr>
+<tr class="even">
+<td>wavelength0</td>
+<td>float</td>
+<td>0</td>
+<td>Wavelength of pixel 0</td>
+</tr>
+<tr class="odd">
+<td>pixel1</td>
+<td>int</td>
+<td>0</td>
+<td>pixel # for Wavelength 1</td>
+</tr>
+<tr class="even">
+<td>wavelength1</td>
+<td>float</td>
+<td>0</td>
+<td>Wavelength for pixel1</td>
+</tr>
+</tbody>
+</table>
+<section id="def-read_spectra" class="level4">
+<h4 class="anchored" data-anchor-id="def-read_spectra">def read_spectra()</h4>
+<hr>
+</section>
+</section>
+<section id="read_spectra" class="level3">
+<h3 class="anchored" data-anchor-id="read_spectra">read_spectra</h3>
+<blockquote class="blockquote">
+<pre><code> read_spectra (f, remove_bias=True, y_average=True)</code></pre>
+</blockquote>
+<p>Reads a Json hyperspectra file.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f</td>
+<td></td>
+<td></td>
+<td>JSON Spectra file name</td>
+</tr>
+<tr class="even">
+<td>remove_bias</td>
+<td>bool</td>
+<td>True</td>
+<td>Bol remove bias</td>
+</tr>
+<tr class="odd">
+<td>y_average</td>
+<td>bool</td>
+<td>True</td>
+<td>Average Y values</td>
+</tr>
+<tr class="even">
+<td><strong>Returns</strong></td>
+<td><strong>float</strong></td>
+<td></td>
+<td><strong>Numpy array of spectral points.</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Test configuring, calibrating, and loading a JSON spectra file.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span>dt<span class="sc">.</span>datetime<span class="sc">.</span>utcnow() <span class="sc">}</span><span class="ss">: Testing creating HyperSpectral.'</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Use a json spectra to initialize things.</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span>dt<span class="sc">.</span>datetime<span class="sc">.</span>utcnow() <span class="sc">}</span><span class="ss">: Loading a json Spectra file to calibrate wavelength.'</span>)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>configure_json_spectra(test_spectra_file)</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Calibrate the spectra for wavelength in nanometers</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span>dt<span class="sc">.</span>datetime<span class="sc">.</span>utcnow() <span class="sc">}</span><span class="ss">: Calibrating wavelength.'</span>)</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>wavelengths <span class="op">=</span> calibrate_using_2_wavelengths( </span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  pixel0 <span class="op">=</span>  <span class="dv">73</span>, wavelength0 <span class="op">=</span> <span class="fl">430.774</span>, </span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>  pixel1 <span class="op">=</span> <span class="dv">941</span>, wavelength1 <span class="op">=</span> <span class="fl">759.370</span> )</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">Wavelength Calibration Data:</span><span class="ch">\n\n</span><span class="st">'</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a><span class="st">'                     First      Second</span><span class="ch">\n</span><span class="st">'</span></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a><span class="ss">f'   Wavelengths (nm): </span><span class="sc">{</span>wavelengths[<span class="dv">73</span>]<span class="sc">:7.3f}</span><span class="ss">      </span><span class="sc">{</span>wavelengths[<span class="dv">941</span>]<span class="sc">:7.3f}</span><span class="ch">\n</span><span class="ss">'</span></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a><span class="ss">f'     Pixel Location: </span><span class="sc">{</span><span class="dv">73</span><span class="sc">:7.3f}</span><span class="ss">      </span><span class="sc">{</span><span class="dv">941</span><span class="sc">:7.3f}</span><span class="ch">\n</span><span class="ss">'</span>)</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Read a spectra array from a file into s</span></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span>dt<span class="sc">.</span>datetime<span class="sc">.</span>utcnow() <span class="sc">}</span><span class="ss">: Reading a spectra into "s"'</span>)</span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> read_spectra( test_spectra_file )</span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the spectra vs pixel number.</span></span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.plot(s)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>2023-06-18 20:15:27.504516: Testing creating HyperSpectral.
+2023-06-18 20:15:27.504590: Loading json file to calibrate wavelength.
+2023-06-18 20:15:27.595740: Calibrating wavelength.
+
+Wavelength Calibration Data:
+
+                     First      Second
+   Wavelengths (nm): 430.774      759.370
+     Pixel Location:  73.000      941.000
+
+2023-06-18 20:15:27.595881: Reading a spectra into "s"</code></pre>
+</div>
+</div>
+<p>Generate Fraunhofer line data suitable to plot with Bokeh.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate Fraunhofer plot lines for reference.</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>fran_x <span class="op">=</span> []<span class="op">;</span> fran_y <span class="op">=</span> []</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>y0 <span class="op">=</span> <span class="fl">0.0</span><span class="op">;</span>    y1 <span class="op">=</span> <span class="bu">max</span>(s)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> Fraunhofer_lines:</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  x <span class="op">=</span> Fraunhofer_lines[i][<span class="dv">1</span>]</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  fran_x.append( [ x,x ] )</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  fran_y.append( [y0, y1] )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Generate a plot of the Spectra.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>spectra_w <span class="op">=</span> figure(title<span class="op">=</span><span class="st">"Spectra vs Pixel"</span>,</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>                   x_axis_label<span class="op">=</span><span class="st">'Wavelength (nm)'</span>, y_axis_label<span class="op">=</span><span class="st">'Intensity (Counts)'</span>,</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>                  height<span class="op">=</span><span class="dv">300</span>, width<span class="op">=</span><span class="dv">700</span>)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>junk <span class="op">=</span> spectra_w.multi_line(fran_x, fran_y, color<span class="op">=</span><span class="st">'lightgray'</span>, legend_label<span class="op">=</span><span class="st">"Fraunhofer Lines."</span> )</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>junk <span class="op">=</span> spectra_w.line(wavelengths, s, legend_label<span class="op">=</span><span class="st">"Temp."</span>, line_width<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>show(spectra_w)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+
+  <div id="e09f9d22-28dc-4b61-b8ca-a733594f3b26" data-root-id="p10352" style="display: contents;"></div>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/javascript">
+(function(root) {
+  function embed_document(root) {
+  const docs_json = {"47c9abc4-a428-4e50-8510-8128e4b70209":{"version":"3.1.1","title":"Bokeh Application","defs":[{"type":"model","name":"ReactiveHTML1"},{"type":"model","name":"FlexBox1","properties":[{"name":"align_content","kind":"Any","default":"flex-start"},{"name":"align_items","kind":"Any","default":"flex-start"},{"name":"flex_direction","kind":"Any","default":"row"},{"name":"flex_wrap","kind":"Any","default":"wrap"},{"name":"justify_content","kind":"Any","default":"flex-start"}]},{"type":"model","name":"FloatPanel1","properties":[{"name":"config","kind":"Any","default":{"type":"map"}},{"name":"contained","kind":"Any","default":true},{"name":"position","kind":"Any","default":"right-top"},{"name":"offsetx","kind":"Any","default":null},{"name":"offsety","kind":"Any","default":null},{"name":"theme","kind":"Any","default":"primary"},{"name":"status","kind":"Any","default":"normalized"}]},{"type":"model","name":"GridStack1","properties":[{"name":"mode","kind":"Any","default":"warn"},{"name":"ncols","kind":"Any","default":null},{"name":"nrows","kind":"Any","default":null},{"name":"allow_resize","kind":"Any","default":true},{"name":"allow_drag","kind":"Any","default":true},{"name":"state","kind":"Any","default":[]}]},{"type":"model","name":"drag1","properties":[{"name":"slider_width","kind":"Any","default":5},{"name":"slider_color","kind":"Any","default":"black"},{"name":"value","kind":"Any","default":50}]},{"type":"model","name":"click1","properties":[{"name":"terminal_output","kind":"Any","default":""},{"name":"debug_name","kind":"Any","default":""},{"name":"clears","kind":"Any","default":0}]},{"type":"model","name":"FastWrapper1","properties":[{"name":"object","kind":"Any","default":null},{"name":"style","kind":"Any","default":null}]},{"type":"model","name":"NotificationAreaBase1","properties":[{"name":"position","kind":"Any","default":"bottom-right"},{"name":"_clear","kind":"Any","default":0}]},{"type":"model","name":"NotificationArea1","properties":[{"name":"notifications","kind":"Any","default":[]},{"name":"position","kind":"Any","default":"bottom-right"},{"name":"_clear","kind":"Any","default":0},{"name":"types","kind":"Any","default":[{"type":"map","entries":[["type","warning"],["background","#ffc107"],["icon",{"type":"map","entries":[["className","fas fa-exclamation-triangle"],["tagName","i"],["color","white"]]}]]},{"type":"map","entries":[["type","info"],["background","#007bff"],["icon",{"type":"map","entries":[["className","fas fa-info-circle"],["tagName","i"],["color","white"]]}]]}]}]},{"type":"model","name":"Notification","properties":[{"name":"background","kind":"Any","default":null},{"name":"duration","kind":"Any","default":3000},{"name":"icon","kind":"Any","default":null},{"name":"message","kind":"Any","default":""},{"name":"notification_type","kind":"Any","default":null},{"name":"_destroyed","kind":"Any","default":false}]},{"type":"model","name":"TemplateActions1","properties":[{"name":"open_modal","kind":"Any","default":0},{"name":"close_modal","kind":"Any","default":0}]},{"type":"model","name":"BootstrapTemplateActions1","properties":[{"name":"open_modal","kind":"Any","default":0},{"name":"close_modal","kind":"Any","default":0}]},{"type":"model","name":"MaterialTemplateActions1","properties":[{"name":"open_modal","kind":"Any","default":0},{"name":"close_modal","kind":"Any","default":0}]}],"roots":[{"type":"object","name":"Figure","id":"p10352","attributes":{"width":700,"height":300,"x_range":{"type":"object","name":"DataRange1d","id":"p10353"},"y_range":{"type":"object","name":"DataRange1d","id":"p10354"},"x_scale":{"type":"object","name":"LinearScale","id":"p10366"},"y_scale":{"type":"object","name":"LinearScale","id":"p10368"},"title":{"type":"object","name":"Title","id":"p10355","attributes":{"text":"Spectra vs Pixel"}},"renderers":[{"type":"object","name":"GlyphRenderer","id":"p10405","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p10399","attributes":{"selected":{"type":"object","name":"Selection","id":"p10401","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p10400"},"data":{"type":"map","entries":[["xs",[[759.37,759.37],[686.719,686.719],[656.281,656.281],[627.661,627.661],[589.592,589.592],[588.995,588.995],[587.5618,587.5618],[546.073,546.073],[527.039,527.039],[518.362,518.362],[517.27,517.27],[516.891,516.891],[516.733,516.733],[495.761,495.761],[486.134,486.134],[466.814,466.814],[438.355,438.355],[430.79,430.79],[430.774,430.774],[396.847,396.847]]],["ys",[[0.0,142.08125],[0.0,142.08125],[0.0,142.08125],[0.0,142.08125],[0.0,142.08125],[0.0,142.08125],[0.0,142.08125],[0.0,142.08125],[0.0,142.08125],[0.0,142.08125],[0.0,142.08125],[0.0,142.08125],[0.0,142.08125],[0.0,142.08125],[0.0,142.08125],[0.0,142.08125],[0.0,142.08125],[0.0,142.08125],[0.0,142.08125],[0.0,142.08125]]]]}}},"view":{"type":"object","name":"CDSView","id":"p10406","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p10407"}}},"glyph":{"type":"object","name":"MultiLine","id":"p10402","attributes":{"xs":{"type":"field","field":"xs"},"ys":{"type":"field","field":"ys"},"line_color":{"type":"value","value":"lightgray"}}},"nonselection_glyph":{"type":"object","name":"MultiLine","id":"p10403","attributes":{"xs":{"type":"field","field":"xs"},"ys":{"type":"field","field":"ys"},"line_color":{"type":"value","value":"lightgray"},"line_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"MultiLine","id":"p10404","attributes":{"xs":{"type":"field","field":"xs"},"ys":{"type":"field","field":"ys"},"line_color":{"type":"value","value":"lightgray"},"line_alpha":{"type":"value","value":0.2}}}}},{"type":"object","name":"GlyphRenderer","id":"p10416","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p10410","attributes":{"selected":{"type":"object","name":"Selection","id":"p10412","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p10411"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"xfHTyzcyeUDI+OhnRjh5QMv//QNVPnlAzgYToGNEeUDRDSg8ckp5QNQUPdiAUHlA1xtSdI9WeUDbImcQnlx5QN4pfKysYnlA4TCRSLtoeUDkN6bkyW55QOc+u4DYdHlA6kXQHOd6eUDtTOW49YB5QPFT+lQEh3lA9FoP8RKNeUD3YSSNIZN5QPpoOSkwmXlA/W9OxT6feUAAd2NhTaV5QAN+eP1bq3lAB4WNmWqxeUAKjKI1ebd5QA2Tt9GHvXlAEJrMbZbDeUAToeEJpcl5QBao9qWzz3lAGa8LQsLVeUAdtiDe0Nt5QCC9NXrf4XlAI8RKFu7neUAmy1+y/O15QCnSdE4L9HlALNmJ6hn6eUAv4J6GKAB6QDPnsyI3BnpANu7IvkUMekA59d1aVBJ6QDz88vZiGHpAPwMIk3EeekBCCh0vgCR6QEURMsuOKnpASRhHZ50wekBMH1wDrDZ6QE8mcZ+6PHpAUi2GO8lCekBVNJvX10h6QFg7sHPmTnpAW0LFD/VUekBfSdqrA1t6QGJQ70cSYXpAZVcE5CBnekBoXhmAL216QGtlLhw+c3pAbmxDuEx5ekBxc1hUW396QHV6bfBphXpAeIGCjHiLekB7iJcoh5F6QH6PrMSVl3pAgZbBYKSdekCEndb8sqN6QIek65jBqXpAi6sANdCvekCOshXR3rV6QJG5Km3tu3pAlMA/CfzBekCXx1SlCsh6QJrOaUEZznpAndV+3SfUekCh3JN5Ntp6QKTjqBVF4HpAp+q9sVPmekCq8dJNYux6QK345+lw8npAsP/8hX/4ekCzBhIijv56QLcNJ76cBHtAuhQ8WqsKe0C9G1H2uRB7QMAiZpLIFntAwyl7Ltcce0DGMJDK5SJ7QMk3pWb0KHtAzT66AgMve0DQRc+eETV7QNNM5DogO3tA1lP51i5Be0DZWg5zPUd7QNxhIw9MTXtA32g4q1pTe0Djb01HaVl7QOZ2YuN3X3tA6X13f4Zle0DshIwblWt7QO+LobejcXtA8pK2U7J3e0D1mcvvwH17QPmg4IvPg3tA/Kf1J96Je0D/rgrE7I97QAK2H2D7lXtABb00/Amce0AIxEmYGKJ7QAvLXjQnqHtAD9Jz0DWue0AS2YhsRLR7QBXgnQhTuntAGOeypGHAe0Ab7sdAcMZ7QB713Nx+zHtAIfzxeI3Se0AlAwcVnNh7QCgKHLGq3ntAKxExTbnke0AuGEbpx+p7QDEfW4XW8HtANCZwIeX2e0A3LYW98/x7QDs0mlkCA3xAPjuv9RAJfEBBQsSRHw98QERJ2S0uFXxAR1DuyTwbfEBKVwNmSyF8QE1eGAJaJ3xAUWUtnmgtfEBUbEI6dzN8QFdzV9aFOXxAWnpscpQ/fEBdgYEOo0V8QGCIlqqxS3xAY4+rRsBRfEBnlsDizld8QGqd1X7dXXxAbaTqGuxjfEBwq/+2+ml8QHOyFFMJcHxAdrkp7xd2fEB5wD6LJnx8QH3HUyc1gnxAgM5ow0OIfECD1X1fUo58QIbckvtglHxAieOnl2+afECM6rwzfqB8QI/x0c+MpnxAk/jma5usfECW//sHqrJ8QJkGEaS4uHxAnA0mQMe+fECfFDvc1cR8QKIbUHjkynxApSJlFPPQfECpKXqwAdd8QKwwj0wQ3XxArzek6B7jfECyPrmELel8QLVFziA873xAuEzjvEr1fEC7U/hYWft8QL5aDfVnAX1AwmEikXYHfUDFaDcthQ19QMhvTMmTE31Ay3ZhZaIZfUDOfXYBsR99QNGEi52/JX1A1IugOc4rfUDYkrXV3DF9QNuZynHrN31A3qDfDfo9fUDhp/SpCER9QOSuCUYXSn1A57Ue4iVQfUDqvDN+NFZ9QO7DSBpDXH1A8cpdtlFifUD00XJSYGh9QPfYh+5ubn1A+t+cin10fUD95rEmjHp9QADuxsKagH1ABPXbXqmGfUAH/PD6t4x9QAoDBpfGkn1ADQobM9WYfUAQETDP4559QBMYRWvypH1AFh9aBwGrfUAaJm+jD7F9QB0thD8et31AIDSZ2yy9fUAjO653O8N9QCZCwxNKyX1AKUnYr1jPfUAsUO1LZ9V9QDBXAuh1231AM14XhIThfUA2ZSwgk+d9QDlsQbyh7X1APHNWWLDzfUA/emv0vvl9QEKBgJDN/31ARoiVLNwFfkBJj6rI6gt+QEyWv2T5EX5AT53UAAgYfkBSpOmcFh5+QFWr/jglJH5AWLIT1TMqfkBcuShxQjB+QF/APQ1RNn5AYsdSqV88fkBlzmdFbkJ+QGjVfOF8SH5Aa9yRfYtOfkBu46YZmlR+QHLqu7WoWn5AdfHQUbdgfkB4+OXtxWZ+QHv/+onUbH5AfgYQJuNyfkCBDSXC8Xh+QIQUOl4Af35AiBtP+g6FfkCLImSWHYt+QI4peTIskX5AkTCOzjqXfkCUN6NqSZ1+QJc+uAZYo35AmkXNomapfkCeTOI+da9+QKFT99qDtX5ApFoMd5K7fkCnYSETocF+QKpoNq+vx35ArW9LS77NfkCwdmDnzNN+QLR9dYPb2X5At4SKH+rffkC6i5+7+OV+QL2StFcH7H5AwJnJ8xXyfkDEoN6PJPh+QMan8ysz/n5Ayq4IyEEEf0DNtR1kUAp/QNC8MgBfEH9A08NHnG0Wf0DWylw4fBx/QNrRcdSKIn9A3NiGcJkof0Dg35sMqC5/QOPmsKi2NH9A5u3FRMU6f0Dp9Nrg00B/QOz773ziRn9A8AIFGfFMf0DyCRq1/1J/QPYQL1EOWX9A+RdE7Rxff0D8HlmJK2V/QP8lbiU6a39AAi2DwUhxf0AGNJhdV3d/QAg7rfllfX9ADELClXSDf0APSdcxg4l/QBJQ7M2Rj39AFVcBaqCVf0AYXhYGr5t/QBtlK6K9oX9AHmxAPsynf0Aic1Xa2q1/QCV6anbps39AKIF/Evi5f0AriJSuBsB/QC6PqUoVxn9AMZa+5iPMf0A0ndOCMtJ/QDik6B5B2H9AO6v9uk/ef0A+shJXXuR/QEG5J/Ns6n9ARMA8j3vwf0BHx1ErivZ/QErOZseY/H9Ap+q9sVMBgEAobsj/WgSAQKrx0k1iB4BALHXdm2kKgECt+OfpcA2AQC988jd4EIBAsP/8hX8TgEAygwfUhhaAQLMGEiKOGYBANYoccJUcgEC2DSe+nB+AQDiRMQykIoBAuhQ8WqslgEA7mEaosiiAQL0bUfa5K4BAPp9bRMEugEDAImaSyDGAQEKmcODPNIBAwyl7Ltc3gEBFrYV83jqAQMYwkMrlPYBASLSaGO1AgEDJN6Vm9EOAQEu7r7T7RoBAzD66AgNKgEBOwsRQCk2AQNBFz54RUIBAUcnZ7BhTgEDTTOQ6IFaAQFTQ7ognWYBA1lP51i5cgEBY1wMlNl+AQNlaDnM9YoBAW94YwURlgEDcYSMPTGiAQF7lLV1Ta4BA32g4q1pugEBh7EL5YXGAQOJvTUdpdIBAZPNXlXB3gEDmdmLjd3qAQGf6bDF/fYBA6X13f4aAgEBqAYLNjYOAQOyEjBuVhoBAbgiXaZyJgEDvi6G3o4yAQHEPrAWrj4BA8pK2U7KSgEB0FsGhuZWAQPWZy+/AmIBAdx3WPcibgED4oOCLz56AQHok69nWoYBA/Kf1J96kgEB9KwB25aeAQP+uCsTsqoBAgDIVEvStgEACth9g+7CAQIQ5Kq4CtIBABb00/Am3gECHQD9KEbqAQAjESZgYvYBAikdU5h/AgEALy140J8OAQI1OaYIuxoBADtJz0DXJgECQVX4ePcyAQBLZiGxEz4BAk1yTukvSgEAV4J0IU9WAQJZjqFZa2IBAGOeypGHbgECaar3yaN6AQBvux0Bw4YBAnXHSjnfkgEAe9dzcfueAQKB45yqG6oBAIfzxeI3tgECjf/zGlPCAQCQDBxWc84BApoYRY6P2gEAoChyxqvmAQKmNJv+x/IBAKxExTbn/gECslDubwAKBQC4YRunHBYFAsJtQN88IgUAxH1uF1guBQLOiZdPdDoFANCZwIeURgUC2qXpv7BSBQDcthb3zF4FAubCPC/sagUA6NJpZAh6BQLy3pKcJIYFAPjuv9RAkgUC/vrlDGCeBQEFCxJEfKoFAwsXO3yYtgUBESdktLjCBQMbM43s1M4FAR1DuyTw2gUDJ0/gXRDmBQEpXA2ZLPIFAzNoNtFI/gUBNXhgCWkKBQM/hIlBhRYFAUGUtnmhIgUDS6Dfsb0uBQFRsQjp3ToFA1e9MiH5RgUBXc1fWhVSBQNj2YSSNV4FAWnpscpRagUDc/XbAm12BQF2BgQ6jYIFA3wSMXKpjgUBgiJaqsWaBQOILofi4aYFAY4+rRsBsgUDlEraUx2+BQGaWwOLOcoFA6BnLMNZ1gUBqndV+3XiBQOsg4Mzke4FAbaTqGux+gUDuJ/Vo84GBQHCr/7b6hIFA8i4KBQKIgUBzshRTCYuBQPU1H6EQjoFAdrkp7xeRgUD4PDQ9H5SBQHrAPosml4FA+0NJ2S2agUB8x1MnNZ2BQP5KXnU8oIFAgM5ow0OjgUABUnMRS6aBQIPVfV9SqYFABFmIrVmsgUCG3JL7YK+BQAhgnUlosoFAieOnl2+1gUALZ7LldriBQIzqvDN+u4FADm7HgYW+gUCQ8dHPjMGBQBF13B2UxIFAkvjma5vHgUAUfPG5osqBQJb/+weqzYFAF4MGVrHQgUCZBhGkuNOBQBqKG/K/1oFAnA0mQMfZgUAekTCOztyBQJ8UO9zV34FAIZhFKt3igUCiG1B45OWBQCSfWsbr6IFApiJlFPPrgUAnpm9i+u6BQKgperAB8oFAKq2E/gj1gUCsMI9MEPiBQC20mZoX+4FArzek6B7+gUAwu642JgGCQLI+uYQtBIJANMLD0jQHgkC1Rc4gPAqCQDfJ2G5DDYJAuEzjvEoQgkA60O0KUhOCQLtT+FhZFoJAPdcCp2AZgkC+Wg31ZxyCQEDeF0NvH4JAwmEikXYigkBD5SzffSWCQMVoNy2FKIJARuxBe4wrgkDIb0zJky6CQErzVhebMYJAy3ZhZaI0gkBN+muzqTeCQM59dgGxOoJAUAGBT7g9gkDRhIudv0CCQFMIluvGQ4JA1IugOc5GgkBWD6uH1UmCQNiStdXcTIJAWRbAI+RPgkDbmcpx61KCQFwd1b/yVYJA3qDfDfpYgkBgJOpbAVyCQOGn9KkIX4JAYyv/9w9igkDkrglGF2WCQGYyFJQeaIJA57Ue4iVrgkBpOSkwLW6CQOq8M340cYJAbEA+zDt0gkDuw0gaQ3eCQG9HU2hKeoJA8cpdtlF9gkByTmgEWYCCQPTRclJgg4JAdlV9oGeGgkD32IfubomCQHlckjx2jIJA+t+cin2PgkB8Y6fYhJKCQP3msSaMlYJAf2q8dJOYgkAA7sbCmpuCQIJx0RCinoJABPXbXqmhgkCFeOassKSCQAf88Pq3p4JAiH/7SL+qgkAKAwaXxq2CQIyGEOXNsIJADQobM9WzgkCPjSWB3LaCQBARMM/juYJAkpQ6Heu8gkATGEVr8r+CQJWbT7n5woJAFh9aBwHGgkCYomRVCMmCQBomb6MPzIJAm6l58RbPgkAdLYQ/HtKCQJ6wjo0l1YJAIDSZ2yzYgkCit6MpNNuCQCM7rnc73oJApb64xULhgkAmQsMTSuSCQKjFzWFR54JAKUnYr1jqgkCrzOL9X+2CQCxQ7Utn8IJArtP3mW7zgkAwVwLodfaCQLHaDDZ9+YJAM14XhIT8gkC04SHSi/+CQDZlLCCTAoNAuOg2bpoFg0A5bEG8oQiDQLvvSwqpC4NAPHNWWLAOg0C+9mCmtxGDQD96a/S+FINAwf11QsYXg0BCgYCQzRqDQMQEi97UHYNARoiVLNwgg0DHC6B64yODQEmPqsjqJoNAyhK1FvIpg0BMlr9k+SyDQM4ZyrIAMINAT53UAAgzg0DRIN9ODzaDQFKk6ZwWOYNA1Cf06h08g0BVq/44JT+DQNcuCYcsQoNAWLIT1TNFg0DaNR4jO0iDQFy5KHFCS4NA3Twzv0lOg0BfwD0NUVGDQOBDSFtYVINAYsdSqV9Xg0DkSl33ZlqDQGXOZ0VuXYNA51Fyk3Vgg0Bo1XzhfGODQOpYhy+EZoNAa9yRfYtpg0DtX5zLkmyDQG7jphmab4NA8GaxZ6Fyg0By6ru1qHWDQPNtxgOweINAdfHQUbd7g0D2dNufvn6DQHj45e3FgYNA+nvwO82Eg0B7//qJ1IeDQP2CBdjbioNAfgYQJuONg0AAihp06pCDQIENJcLxk4NAA5EvEPmWg0CEFDpeAJqDQAaYRKwHnYNAiBtP+g6gg0AJn1lIFqODQIsiZJYdpoNADKZu5CSpg0COKXkyLKyDQBCtg4Azr4NAkTCOzjqyg0ATtJgcQrWDQJQ3o2pJuINAFrutuFC7g0CXPrgGWL6DQBnCwlRfwYNAmkXNombEg0AcydfwbceDQJ5M4j51yoNAH9DsjHzNg0ChU/fag9CDQCLXASmL04NApFoMd5LWg0Am3hbFmdmDQKdhIROh3INAKeUrYajfg0CqaDavr+KDQCzsQP225YNArW9LS77og0Av81WZxeuDQLB2YOfM7oNAMvpqNdTxg0C0fXWD2/SDQDUBgNHi94NAt4SKH+r6g0A4CJVt8f2DQLqLn7v4AIRAPA+qCQAEhEC9krRXBweEQD8Wv6UOCoRAwJnJ8xUNhEBCHdRBHRCEQMOg3o8kE4RARSTp3SsWhEDGp/MrMxmEQEgr/nk6HIRAyq4IyEEfhEBLMhMWSSKEQM21HWRQJYRATjkoslcohEDQvDIAXyuEQFJAPU5mLoRA08NHnG0xhEBVR1LqdDSEQNbKXDh8N4RAWE5nhoM6hEDZ0XHUij2EQFtVfCKSQIRA3NiGcJlDhEBeXJG+oEaEQODfmwyoSYRAYWOmWq9MhEDj5rCotk+EQGRqu/a9UoRA5u3FRMVVhEBocdCSzFiEQOn02uDTW4RAa3jlLttehEDs++984mGEQG5/+srpZIRA7wIFGfFnhEBxhg9n+GqEQPIJGrX/bYRAdI0kAwdxhED2EC9RDnSEQHeUOZ8Vd4RA+RdE7Rx6hEB6m047JH2EQPweWYkrgIRAfqJj1zKDhED/JW4lOoaEQIGpeHNBiYRAAi2DwUiMhECEsI0PUI+EQAU0mF1XkoRAh7eiq16VhEAIO635ZZiEQIq+t0dtm4RADELClXSehECNxczje6GEQA9J1zGDpIRAkMzhf4qnhEASUOzNkaqEQJTT9huZrYRAFVcBaqCwhECX2gu4p7OEQBheFgavtoRAmuEgVLa5hEAbZSuivbyEQJ3oNfDEv4RAHmxAPszChECg70qM08WEQCJzVdrayIRAo/ZfKOLLhEAlemp26c6EQKb9dMTw0YRAKIF/EvjUhECqBIpg/9eEQCuIlK4G24RArQuf/A3ehEAuj6lKFeGEQLAStJgc5IRAMZa+5iPnhECzGck0K+qEQDSd04Iy7YRAtiDe0DnwhEA4pOgeQfOEQLkn82xI9oRAO6v9uk/5hEC8LggJV/yEQD6yElde/4RAwDUdpWUChUBBuSfzbAWFQMI8MkF0CIVARMA8j3sLhUDGQ0fdgg6FQEfHUSuKEYVAyUpceZEUhUBKzmbHmBeFQMxRcRWgGoVATtV7Y6cdhUDPWIaxriCFQFHckP+1I4VA0l+bTb0mhUBU46WbxCmFQNZmsOnLLIVAV+q6N9MvhUDYbcWF2jKFQFrxz9PhNYVA3HTaIek4hUBd+ORv8DuFQN977733PoVAYP/5C/9BhUDiggRaBkWFQGQGD6gNSIVA5YkZ9hRLhUBnDSREHE6FQOiQLpIjUYVAahQ54CpUhUDsl0MuMleFQG0bTnw5WoVA7p5YykBdhUBwImMYSGCFQPKlbWZPY4VAcyl4tFZmhUD1rIICXmmFQHYwjVBlbIVA+LOXnmxvhUB6N6Lsc3KFQPu6rDp7dYVAfT63iIJ4hUD+wcHWiXuFQIBFzCSRfoVAAsnWcpiBhUCDTOHAn4SFQATQ6w6nh4VAhlP2XK6KhUAI1wCrtY2FQIpaC/m8kIVAC94VR8SThUCMYSCVy5aFQA7lKuPSmYVAkGg1MdqchUAR7D9/4Z+FQJNvSs3oooVAFPNUG/ClhUCWdl9p96iFQBj6abf+q4VAmX10BQavhUAaAX9TDbKFQJyEiaEUtYVAHgiU7xu4hUCgi549I7uFQCEPqYsqvoVAopKz2THBhUAkFr4nOcSFQKaZyHVAx4VAJx3Tw0fKhUCpoN0RT82FQCok6F9W0IVArKfyrV3ThUAuK/37ZNaFQK+uB0ps2YVAMDISmHPchUCytRzmet+FQDQ5JzSC4oVAtrwxgonlhUA3QDzQkOiFQLjDRh6Y64VAOkdRbJ/uhUC8ylu6pvGFQD1OZgiu9IVAv9FwVrX3hUBAVXukvPqFQMLYhfLD/YVARFyQQMsAhkDF35qO0gOGQEZjpdzZBoZAyOavKuEJhkBKarp46AyGQMztxMbvD4ZATXHPFPcShkDO9Nli/hWGQFB45LAFGYZA0vvu/gwchkBTf/lMFB+GQNUCBJsbIoZAVoYO6SIlhkDYCRk3KiiGQFqNI4UxK4ZA2xAu0zguhkBclDghQDGGQN4XQ29HNIZAYJtNvU43hkDiHlgLVjqGQGOiYlldPYZA5CVtp2RAhkBmqXf1a0OGQOgsgkNzRoZAabCMkXpJhkDrM5ffgUyGQGy3oS2JT4ZA7jqse5BShkBwvrbJl1WGQPFBwRefWIZAcsXLZaZbhkD0SNazrV6GQHbM4AG1YYZA+E/rT7xkhkB50/Wdw2eGQPpWAOzKaoZAfNoKOtJthkD+XRWI2XCGQH/hH9bgc4ZAAWUqJOh2hkCC6DRy73mGQARsP8D2fIZAhu9JDv5/hkAHc1RcBYOGQIj2XqoMhoZACnpp+BOJhkCM/XNGG4yGQA6BfpQij4ZAjwSJ4imShkAQiJMwMZWGQJILnn44mIZAFI+ozD+bhkCVErMaR56GQBaWvWhOoYZAmBnItlWkhkAandIEXaeGQJwg3VJkqoZAHaTnoGuthkCeJ/LucrCGQCCr/Dx6s4ZAoi4Hi4G2hkAkshHZiLmGQKU1HCeQvIZAJrkmdZe/hkCoPDHDnsKGQCrAOxGmxYZAq0NGX63IhkAsx1CttMuGQK5KW/u7zoZAMM5lScPRhkCyUXCXytSGQDPVeuXR14ZAtFiFM9nahkA23I+B4N2GQLhfms/n4IZAOuOkHe/jhkC7Zq9r9uaGQDzqubn96YZAvm3EBwXthkBA8c5VDPCGQMF02aMT84ZAQvjj8Rr2hkDEe+4/IvmGQEb/+I0p/IZAyIID3DD/hkBJBg4qOAKHQMqJGHg/BYdATA0jxkYIh0DOkC0UTguHQFAUOGJVDodA0ZdCsFwRh0BSG03+YxSHQNSeV0xrF4dAViJimnIah0DXpWzoeR2HQFgpdzaBIIdA2qyBhIgjh0BcMIzSjyaHQN6zliCXKYdAXzehbp4sh0Dguqu8pS+HQGI+tgqtModA5MHAWLQ1h0BmRcumuziHQOfI1fTCO4dAaEzgQso+h0Dqz+qQ0UGHQGxT9d7YRIdA7db/LOBHh0BuWgp750qHQPDdFMnuTYdAcmEfF/ZQh0D05Cll/VOHQHVoNLMEV4dA9us+AQxah0B4b0lPE12HQPryU50aYIdAfHZe6yFjh0D9+Wg5KWaHQH59c4cwaYdAAAF+1Tdsh0CChIgjP2+HQAMIk3FGcodAhIudv011h0AGD6gNVXiHQIiSsltce4dACha9qWN+h0CLmcf3aoGHQAwd0kVyhIdAjqDck3mHh0AQJOfhgIqHQJKn8S+IjYdAEyv8fY+Qh0CUrgbMlpOHQBYyERqelodAmLUbaKWZh0AZOSa2rJyHQJq8MAS0n4dAHEA7Uruih0Cew0WgwqWHQCBHUO7JqIdAocpaPNGrh0AiTmWK2K6HQKTRb9jfsYdAJlV6Jue0h0Co2IR07reHQClcj8L1uodAqt+ZEP29h0AsY6ReBMGHQK7mrqwLxIdAL2q5+hLHh0Cw7cNIGsqHQDJxzpYhzYdAtPTY5CjQh0A2eOMyMNOHQLf77YA31odAOH/4zj7Zh0C6AgMdRtyHQDyGDWtN34dAvgkYuVTih0A/jSIHXOWHQMAQLVVj6IdAQpQ3o2rrh0DEF0Lxce6HQEWbTD958YdAxh5XjYD0h0BIomHbh/eHQMolbCmP+odATKl2d5b9h0DNLIHFnQCIQE6wixOlA4hA0DOWYawGiEBSt6CvswmIQNQ6q/26DIhAVb61S8IPiEDWQcCZyRKIQFjFyufQFYhA2kjVNdgYiEBbzN+D3xuIQNxP6tHmHohAXtP0H+4hiEDgVv9t9SSIQGLaCbz8J4hA410UCgQriEBk4R5YCy6IQOZkKaYSMYhAaOgz9Bk0iEDqaz5CITeIQGvvSJAoOohA7HJT3i89iEBu9l0sN0CIQPB5aHo+Q4hAcf1yyEVGiEDygH0WTUmIQHQEiGRUTIhA9oeSsltPiEB4C50AY1KIQPmOp05qVYhAehKynHFYiED8lbzqeFuIQH4ZxziAXohAAJ3RhodhiECBINzUjmSIQAKk5iKWZ4hAhCfxcJ1qiEAGq/u+pG2IQIcuBg2scIhACLIQW7NziECKNRupunaIQAy5JffBeYhAjjwwRcl8iEAPwDqT0H+IQJBDReHXgohAEsdPL9+FiECUSlp95oiIQBbOZMvti4hAl1FvGfWOiEAY1Xln/JGIQJpYhLUDlYhAHNyOAwuYiECdX5lREpuIQB7jo58ZnohAoGau7SChiEAi6rg7KKSIQKRtw4kvp4hAJfHN1zaqiECmdNglPq2IQCj44nNFsIhAqnvtwUyziEAs//cPVLaIQK2CAl5buYhALgYNrGK8iECwiRf6ab+IQDINIkhxwohAs5AslnjFiEA0FDfkf8iIQLaXQTKHy4hAOBtMgI7OiEC6nlbOldGIQDsiYRyd1IhAvKVraqTXiEA+KXa4q9qIQMCsgAaz3YhAQjCLVLrgiEDDs5WiweOIQEQ3oPDI5ohAxrqqPtDpiEBIPrWM1+yIQMnBv9re74hASkXKKObyiEDMyNR27fWIQE5M38T0+IhA0M/pEvz7iEBRU/RgA/+IQNLW/q4KAolAVFoJ/REFiUDW3RNLGQiJQFhhHpkgC4lA2eQo5ycOiUBaaDM1LxGJQNzrPYM2FIlAXm9I0T0XiUDf8lIfRRqJQGB2XW1MHYlA4vlnu1MgiUBkfXIJWyOJQOYAfVdiJolAZ4SHpWkpiUDoB5LzcCyJQGqLnEF4L4lA7A6nj38yiUBukrHdhjWJQO8VvCuOOIlAcJnGeZU7iUDyHNHHnD6JQHSg2xWkQYlA9SPmY6tEiUB2p/CxskeJQPgq+/+5SolAeq4FTsFNiUD8MRCcyFCJQH21GurPU4lA/jglONdWiUCAvC+G3lmJQAJAOtTlXIlAhMNEIu1fiUAFR09w9GKJQIbKWb77ZYlACE5kDANpiUCK0W5aCmyJQAtVeagRb4lAjNiD9hhyiUAOXI5EIHWJQJDfmJIneIlAEmOj4C57iUCT5q0uNn6JQBRquHw9gYlAlu3CykSEiUAYcc0YTIeJQJr012ZTiolAG3jitFqNiUCc++wCYpCJQB5/91Bpk4lAoAICn3CWiUAhhgztd5mJQKIJFzt/nIlAJI0hiYafiUCmECzXjaKJQCiUNiWVpYlAqRdBc5yoiUAqm0vBo6uJQKweVg+rrolALqJgXbKxiUCwJWurubSJQDGpdfnAt4lAsiyAR8i6iUA0sIqVz72JQLYzlePWwIlAN7efMd7DiUC4Oqp/5caJQDq+tM3syYlAvEG/G/TMiUA+xclp+8+JQL9I1LcC04lAQMzeBQrWiUDCT+lTEdmJQETT86EY3IlAxlb+7x/fiUBH2gg+J+KJQMhdE4wu5YlASuEd2jXoiUDMZCgoPeuJQE3oMnZE7olAzms9xEvxiUBQ70cSU/SJQNJyUmBa94lAVPZcrmH6iUDVeWf8aP2JQFb9cUpwAIpA2IB8mHcDikBaBIfmfgaKQNyHkTSGCYpAXQucgo0MikDejqbQlA+KQGASsR6cEopA4pW7bKMVikBjGca6qhiKQOSc0AiyG4pAZiDbVrkeikDoo+WkwCGKQGon8PLHJIpA66r6QM8nikBsLgWP1iqKQO6xD93dLYpAcDUaK+UwikDyuCR57DOKQHM8L8fzNopA9L85Ffs5ikB2Q0RjAj2KQPjGTrEJQIpAeUpZ/xBDikD6zWNNGEaKQHxRbpsfSYpA/tR46SZMikCAWIM3Lk+KQAHcjYU1UopAgl+Y0zxVikAE46IhRFiKQIZmrW9LW4pACOq3vVJeikCJbcILWmGKQArxzFlhZIpAjHTXp2hnikAO+OH1b2qKQI977EN3bYpAEP/2kX5wikCSggHghXOKQBQGDC6NdopAlokWfJR5ikAXDSHKm3yKQJiQKxijf4pAGhQ2ZqqCikCcl0C0sYWKQB4bSwK5iIpAn55VUMCLikAgImCex46KQKKlauzOkYpAJCl1OtaUikClrH+I3ZeKQCYwitbkmopAqLOUJOydikAqN59y86CKQKy6qcD6o4pALT60DgKnikCuwb5cCaqKQDBFyaoQrYpAssjT+BewikA0TN5GH7OKQLXP6JQmtopANlPz4i25ikC41v0wNbyKQDpaCH88v4pAu90SzUPCikA8YR0bS8WKQL7kJ2lSyIpAQGgyt1nLikDC6zwFYc6KQENvR1No0YpAxPJRoW/UikBGdlzvdteKQMj5Zj1+2opASn1xi4XdikDLAHzZjOCKQEyEhieU44pAzgeRdZvmikBQi5vDoumKQNEOphGq7IpAUpKwX7HvikDUFbutuPKKQFaZxfu/9YpA2BzQScf4ikBZoNqXzvuKQNoj5eXV/opAXKfvM90Bi0DeKvqB5ASLQGCuBNDrB4tA4TEPHvMKi0BitRls+g2LQOQ4JLoBEYtAZrwuCAkUi0DnPzlWEBeLQGjDQ6QXGotA6kZO8h4di0BsylhAJiCLQO5NY44tI4tAb9Ft3DQmi0DwVHgqPCmLQHLYgnhDLItA9FuNxkovi0B235cUUjKLQPdiomJZNYtAeOassGA4i0D6abf+ZzuLQHztwUxvPotA/XDMmnZBi0B+9NbofUSLQAB44TaFR4tAgvvrhIxKi0AEf/bSk02LQIUCASGbUItABoYLb6JTi0CICRa9qVaLQAqNIAuxWYtAjBArWbhci0ANlDWnv1+LQI4XQPXGYotAEJtKQ85li0CSHlWR1WiLQBOiX9/ca4tAlCVqLeRui0AWqXR763GLQJgsf8nydItAGrCJF/p3i0CbM5RlAXuLQBy3nrMIfotAnjqpARCBi0AgvrNPF4SLQKJBvp0eh4tAI8XI6yWKi0CkSNM5LY2LQCbM3Yc0kItAqE/o1TuTi0Ap0/IjQ5aLQKpW/XFKmYtALNoHwFGci0CuXRIOWZ+LQDDhHFxgootAsWQnqmeli0Ay6DH4bqiLQLRrPEZ2q4tANu9GlH2ui0C4clHihLGLQDn2WzCMtItAunlmfpO3i0A8/XDMmrqLQA=="},"shape":[1280],"dtype":"float64","order":"little"}],["y",{"type":"ndarray","array":{"type":"bytes","data":"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"},"shape":[1280],"dtype":"float64","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p10417","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p10418"}}},"glyph":{"type":"object","name":"Line","id":"p10413","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_width":3}},"nonselection_glyph":{"type":"object","name":"Line","id":"p10414","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_alpha":0.1,"line_width":3}},"muted_glyph":{"type":"object","name":"Line","id":"p10415","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_alpha":0.2,"line_width":3}}}}],"toolbar":{"type":"object","name":"Toolbar","id":"p10361","attributes":{"tools":[{"type":"object","name":"PanTool","id":"p10384"},{"type":"object","name":"WheelZoomTool","id":"p10385"},{"type":"object","name":"BoxZoomTool","id":"p10386","attributes":{"overlay":{"type":"object","name":"BoxAnnotation","id":"p10387","attributes":{"syncable":false,"level":"overlay","visible":false,"left_units":"canvas","right_units":"canvas","bottom_units":"canvas","top_units":"canvas","line_color":"black","line_alpha":1.0,"line_width":2,"line_dash":[4,4],"fill_color":"lightgrey","fill_alpha":0.5}}}},{"type":"object","name":"SaveTool","id":"p10388"},{"type":"object","name":"ResetTool","id":"p10389"},{"type":"object","name":"HelpTool","id":"p10390"}]}},"left":[{"type":"object","name":"LinearAxis","id":"p10377","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p10379","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p10380"},"axis_label":"Intensity (Counts)","major_label_policy":{"type":"object","name":"AllLabels","id":"p10378"}}}],"below":[{"type":"object","name":"LinearAxis","id":"p10370","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p10372","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p10373"},"axis_label":"Wavelength (nm)","major_label_policy":{"type":"object","name":"AllLabels","id":"p10371"}}}],"center":[{"type":"object","name":"Grid","id":"p10376","attributes":{"axis":{"id":"p10370"}}},{"type":"object","name":"Grid","id":"p10383","attributes":{"dimension":1,"axis":{"id":"p10377"}}},{"type":"object","name":"Legend","id":"p10408","attributes":{"items":[{"type":"object","name":"LegendItem","id":"p10409","attributes":{"label":{"type":"value","value":"Fraunhofer Lines."},"renderers":[{"id":"p10405"}]}},{"type":"object","name":"LegendItem","id":"p10419","attributes":{"label":{"type":"value","value":"Temp."},"renderers":[{"id":"p10416"}]}}]}}]}}],"callbacks":{"type":"map"}}};
+  const render_items = [{"docid":"47c9abc4-a428-4e50-8510-8128e4b70209","roots":{"p10352":"e09f9d22-28dc-4b61-b8ca-a733594f3b26"},"root_ids":["p10352"]}];
+  root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
+  }
+  if (root.Bokeh !== undefined) {
+    embed_document(root);
+  } else {
+    let attempts = 0;
+    const timer = setInterval(function(root) {
+      if (root.Bokeh !== undefined) {
+        clearInterval(timer);
+        embed_document(root);
+      } else {
+        attempts++;
+        if (attempts > 100) {
+          clearInterval(timer);
+          console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+        }
+      }
+    }, 10, root)
+  }
+})(window);
+</script>
+</div>
+</div>
+<section id="def-nearest_rgb_image-fn-debugfalse" class="level4">
+<h4 class="anchored" data-anchor-id="def-nearest_rgb_image-fn-debugfalse">def nearest_rgb_image( fn, debug=False):</h4>
+<hr>
+</section>
+</section>
+<section id="nearest_rgb_image" class="level3">
+<h3 class="anchored" data-anchor-id="nearest_rgb_image">nearest_rgb_image</h3>
+<blockquote class="blockquote">
+<pre><code> nearest_rgb_image (fn, debug=False)</code></pre>
+</blockquote>
+<p>Returns the path/filename to the RGB photo closes in time to <code>fn</code>. <code>fn</code> is the filename of a Json hyperspectral file.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="ss">f'    Input Json spectra file: </span><span class="sc">{</span>test_spectra_file<span class="sc">}</span><span class="ch">\n</span><span class="ss">'</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="ss">f'        Nearest RGB File is: </span><span class="sc">{</span>nearest_rgb_image( test_spectra_file )<span class="sc">}</span><span class="ss">'</span>  </span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    Input Json spectra file: /mnt/s/2021-0717-HAB-Spec-Tampa-Bay-PIE/2021-0717-HAB-pie//160206/hab_spectra/2021-0717-160401-066388-spec.json
+        Nearest RGB File is: /mnt/s/2021-0717-HAB-Spec-Tampa-Bay-PIE/2021-0717-HAB-pie//160206/hab_rgb/2021-0717-160401-394169-rgb.jpg</code></pre>
+</div>
+</div>
+<section id="def-get_list_of_json_spectra-p" class="level4">
+<h4 class="anchored" data-anchor-id="def-get_list_of_json_spectra-p">def get_list_of_json_spectra( p):</h4>
+<hr>
+</section>
+</section>
+<section id="get_list_of_json_spectra" class="level3">
+<h3 class="anchored" data-anchor-id="get_list_of_json_spectra">get_list_of_json_spectra</h3>
+<blockquote class="blockquote">
+<pre><code> get_list_of_json_spectra (p)</code></pre>
+</blockquote>
+<p>Returns a list of Json spectra full path filenames found in subdirs under “p”.</p>
+<section id="def-json_specs_to_df-specs" class="level4">
+<h4 class="anchored" data-anchor-id="def-json_specs_to_df-specs">def json_specs_to_df( specs ):</h4>
+<hr>
+</section>
+</section>
+<section id="json_specs_to_df" class="level3">
+<h3 class="anchored" data-anchor-id="json_specs_to_df">json_specs_to_df</h3>
+<blockquote class="blockquote">
+<pre><code> json_specs_to_df (specs)</code></pre>
+</blockquote>
+<p>Extracts the hhmmss and fsecs from ‘specs’ filename, converts the hhmmss and fsecs strings to float SOD.fsecs.</p>
+<p>Parameters: specs: list A list of json spectra files.</p>
+<section id="def-read_gps_file_to_df-ifn-debugfalse" class="level4">
+<h4 class="anchored" data-anchor-id="def-read_gps_file_to_df-ifn-debugfalse">def read_gps_file_to_df( ifn, debug=False):</h4>
+<hr>
+</section>
+</section>
+<section id="read_gps_file_to_df" class="level3">
+<h3 class="anchored" data-anchor-id="read_gps_file_to_df">read_gps_file_to_df</h3>
+<blockquote class="blockquote">
+<pre><code> read_gps_file_to_df (ifn, debug=False)</code></pre>
+</blockquote>
+<p>Read a GPS datafile into a dataframe and convert the HH:MM:SS to add an SOD column.</p>
+<p>Test read_gps_file_to_df() function. Read a datafile into a Pandas dataframe.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>Gps_File_Name <span class="op">=</span> <span class="st">'/mnt/f/My Drive/Missions/2021-1208-HAB-Lake-Parker/2021-1208/2021-1208-175324-910850-mission-gps.txt'</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>gps_df <span class="op">=</span> read_gps_file_to_df(Gps_File_Name, debug<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>display(gps_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Date</th>
+<th data-quarto-table-cell-role="th">HMS</th>
+<th data-quarto-table-cell-role="th">Lat</th>
+<th data-quarto-table-cell-role="th">Lon</th>
+<th data-quarto-table-cell-role="th">Elev</th>
+<th data-quarto-table-cell-role="th">Speed</th>
+<th data-quarto-table-cell-role="th">Nsat</th>
+<th data-quarto-table-cell-role="th">Mode</th>
+<th data-quarto-table-cell-role="th">Herr</th>
+<th data-quarto-table-cell-role="th">Verr</th>
+<th data-quarto-table-cell-role="th">Temp</th>
+<th data-quarto-table-cell-role="th">SOD</th>
+<th data-quarto-table-cell-role="th">Course</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2021-12-08</td>
+<td>17:53:28</td>
+<td>28.076396</td>
+<td>-81.945634</td>
+<td>47.2</td>
+<td>0.0</td>
+<td>5</td>
+<td>3</td>
+<td>15.3</td>
+<td>48.3</td>
+<td>48.312</td>
+<td>64408.0</td>
+<td>41.571424</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2021-12-08</td>
+<td>17:53:29</td>
+<td>28.076397</td>
+<td>-81.945633</td>
+<td>46.8</td>
+<td>0.0</td>
+<td>5</td>
+<td>3</td>
+<td>15.3</td>
+<td>48.3</td>
+<td>49.388</td>
+<td>64409.0</td>
+<td>85.100100</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2021-12-08</td>
+<td>17:53:30.100000</td>
+<td>28.076397</td>
+<td>-81.945629</td>
+<td>47.4</td>
+<td>0.0</td>
+<td>5</td>
+<td>3</td>
+<td>15.3</td>
+<td>48.3</td>
+<td>47.774</td>
+<td>64410.1</td>
+<td>16.314411</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2021-12-08</td>
+<td>17:53:31.100000</td>
+<td>28.076398</td>
+<td>-81.945628</td>
+<td>47.0</td>
+<td>0.0</td>
+<td>5</td>
+<td>3</td>
+<td>15.3</td>
+<td>48.3</td>
+<td>48.312</td>
+<td>64411.1</td>
+<td>90.000000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2021-12-08</td>
+<td>17:53:32.100000</td>
+<td>28.076398</td>
+<td>-81.945628</td>
+<td>46.4</td>
+<td>0.0</td>
+<td>5</td>
+<td>3</td>
+<td>15.3</td>
+<td>48.3</td>
+<td>49.388</td>
+<td>64412.1</td>
+<td>-47.694117</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">96</td>
+<td>2021-12-08</td>
+<td>17:55:06</td>
+<td>28.076422</td>
+<td>-81.945623</td>
+<td>40.1</td>
+<td>0.0</td>
+<td>6</td>
+<td>3</td>
+<td>12.3</td>
+<td>47.8</td>
+<td>53.692</td>
+<td>64506.0</td>
+<td>-5.572397</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">97</td>
+<td>2021-12-08</td>
+<td>17:55:07</td>
+<td>28.076425</td>
+<td>-81.945624</td>
+<td>39.9</td>
+<td>0.0</td>
+<td>6</td>
+<td>3</td>
+<td>12.3</td>
+<td>47.8</td>
+<td>54.230</td>
+<td>64507.0</td>
+<td>26.580205</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">98</td>
+<td>2021-12-08</td>
+<td>17:55:08</td>
+<td>28.076427</td>
+<td>-81.945623</td>
+<td>39.8</td>
+<td>0.0</td>
+<td>6</td>
+<td>3</td>
+<td>12.3</td>
+<td>47.8</td>
+<td>53.692</td>
+<td>64508.0</td>
+<td>10.059057</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">99</td>
+<td>2021-12-08</td>
+<td>17:55:09.100000</td>
+<td>28.076432</td>
+<td>-81.945622</td>
+<td>39.8</td>
+<td>0.0</td>
+<td>6</td>
+<td>3</td>
+<td>12.3</td>
+<td>47.8</td>
+<td>54.768</td>
+<td>64509.1</td>
+<td>27.627306</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">100</td>
+<td>2021-12-08</td>
+<td>17:55:10.100000</td>
+<td>28.076435</td>
+<td>-81.945621</td>
+<td>39.7</td>
+<td>0.0</td>
+<td>6</td>
+<td>3</td>
+<td>12.3</td>
+<td>47.8</td>
+<td>54.768</td>
+<td>64510.1</td>
+<td>0.000000</td>
+</tr>
+</tbody>
+</table>
+
+<p>101 rows × 13 columns</p>
+</div>
+</div>
+</div>
+<section id="def-compute_gps_positions-gps-spec_df-debugfalse" class="level4">
+<h4 class="anchored" data-anchor-id="def-compute_gps_positions-gps-spec_df-debugfalse">def compute_gps_positions( gps, spec_df, debug=False):</h4>
+<p>See: https://numpy.org/doc/stable/reference/generated/numpy.interp.html</p>
+<hr>
+</section>
+</section>
+<section id="compute_gps_positions" class="level3">
+<h3 class="anchored" data-anchor-id="compute_gps_positions">compute_gps_positions</h3>
+<blockquote class="blockquote">
+<pre><code> compute_gps_positions (gps, spec_df, debug=False)</code></pre>
+</blockquote>
+<p>Interpolates spectra positions from gps.</p>
+<section id="def-get_bearing-lat10-lat20-long10-long20-debugfalse" class="level4">
+<h4 class="anchored" data-anchor-id="def-get_bearing-lat10-lat20-long10-long20-debugfalse">def get_bearing( lat1=0, lat2=0, long1=0, long2=0, debug=False):</h4>
+<hr>
+</section>
+</section>
+<section id="get_bearing" class="level3">
+<h3 class="anchored" data-anchor-id="get_bearing">get_bearing</h3>
+<blockquote class="blockquote">
+<pre><code> get_bearing (lat1=0, lat2=0, long1=0, long2=0, debug=False)</code></pre>
+</blockquote>
+<p>Comutes and returns the bearing between two lat/lon pairs. See: http://shorturl.at/atGHN</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Test get_bearing()</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>lst <span class="op">=</span> [ [<span class="dv">30</span>,<span class="dv">29</span>, <span class="op">-</span><span class="dv">75</span>, <span class="op">-</span><span class="dv">75</span>],</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>        [<span class="dv">29</span>,<span class="dv">30</span>, <span class="op">-</span><span class="dv">75</span>, <span class="op">-</span><span class="dv">75</span>],</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>        [<span class="dv">30</span>,<span class="dv">30</span>, <span class="op">-</span><span class="dv">76</span>, <span class="op">-</span><span class="dv">75</span>],</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>        [<span class="dv">30</span>,<span class="dv">30</span>, <span class="op">-</span><span class="dv">75</span>, <span class="op">-</span><span class="dv">76</span>] ]</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">Testing get_bearing()'</span>)</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> t <span class="kw">in</span> lst:</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>  v <span class="op">=</span> get_bearing( lat1<span class="op">=</span>t[<span class="dv">0</span>], lat2<span class="op">=</span>t[<span class="dv">1</span>], long1<span class="op">=</span>t[<span class="dv">2</span>], long2<span class="op">=</span>t[<span class="dv">3</span>] )</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>( <span class="ss">f'  </span><span class="sc">{</span>t<span class="sc">}</span><span class="ss">, </span><span class="sc">{</span>v<span class="sc">:6.2f}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Testing get_bearing()
+  [30, 29, -75, -75], 180.00
+  [29, 30, -75, -75],   0.00
+  [30, 30, -76, -75],  89.75
+  [30, 30, -75, -76], -89.75</code></pre>
+</div>
+</div>
+<section id="def-w_range_pixels-xab-debugfalse" class="level4">
+<h4 class="anchored" data-anchor-id="def-w_range_pixels-xab-debugfalse">def w_range_pixels( x,a,b, debug=False):</h4>
+<hr>
+</section>
+</section>
+<section id="w_range_pixels" class="level3">
+<h3 class="anchored" data-anchor-id="w_range_pixels">w_range_pixels</h3>
+<blockquote class="blockquote">
+<pre><code> w_range_pixels (x, a, b, debug=False)</code></pre>
+</blockquote>
+<p>Returns a pixel index list of all pixels between wavelength ‘a’ and ‘b’. Parameters: x A numpy array of wavlengths for each pixel a Starting wavelength b Ending wavelength</p>
+<p>Returns: A list of index values from wavelength ‘a’ to ‘b’</p>
+<section id="def-get_fluorescence-x-y-fl_start0-fl_stop0-base_start0-base_stop0-debugfalse" class="level4">
+<h4 class="anchored" data-anchor-id="def-get_fluorescence-x-y-fl_start0-fl_stop0-base_start0-base_stop0-debugfalse">def get_fluorescence( x, y, fl_start=0, fl_stop=0, base_start=0, base_stop=0, debug=False ):</h4>
+<hr>
+</section>
+</section>
+<section id="get_fluorescence" class="level3">
+<h3 class="anchored" data-anchor-id="get_fluorescence">get_fluorescence</h3>
+<blockquote class="blockquote">
+<pre><code> get_fluorescence (x, y, fl_start=0, fl_stop=0, base_start=0, base_stop=0,
+                   debug=False)</code></pre>
+</blockquote>
+<section id="def-get_fluorescence_700-x-y" class="level4">
+<h4 class="anchored" data-anchor-id="def-get_fluorescence_700-x-y">def get_fluorescence_700( x, y):</h4>
+<hr>
+</section>
+</section>
+<section id="get_fluorescence_700" class="level3">
+<h3 class="anchored" data-anchor-id="get_fluorescence_700">get_fluorescence_700</h3>
+<blockquote class="blockquote">
+<pre><code> get_fluorescence_700 (x, y)</code></pre>
+</blockquote>
+<p>Returns the fluorescence value at 700nm.</p>
+<section id="def-get_fluorescence_683-x-y" class="level4">
+<h4 class="anchored" data-anchor-id="def-get_fluorescence_683-x-y">def get_fluorescence_683( x, y):</h4>
+<hr>
+</section>
+</section>
+<section id="get_fluorescence_683" class="level3">
+<h3 class="anchored" data-anchor-id="get_fluorescence_683">get_fluorescence_683</h3>
+<blockquote class="blockquote">
+<pre><code> get_fluorescence_683 (x, y)</code></pre>
+</blockquote>
+<p>Returns the fluorescence value at 683nm. 683nm is Chlorophyll</p>
+<section id="def-is_water-xy-debugfalse" class="level4">
+<h4 class="anchored" data-anchor-id="def-is_water-xy-debugfalse">def is_water( x,y, debug=False):</h4>
+<hr>
+</section>
+</section>
+<section id="is_water" class="level3">
+<h3 class="anchored" data-anchor-id="is_water">is_water</h3>
+<blockquote class="blockquote">
+<pre><code> is_water (x, y, debug=False)</code></pre>
+</blockquote>
+<p>Returns the mean signal value between 840nm and 860nm wavelengths. Since water absorbs IR.</p>
+<p>Inputs: x A numpy array of wavlengths for each pixel y A numpy array of intensity values at each wavelength. x and y mus be the same size.</p>
+<p>Returns: The mean signal value between 840nm and 860nm. The signal level is not currently normalized for anything, exposure, etc. Threshold is around 4.0. Above 4, land or glint.</p>
+<p>References: Application of the water-related spectral reflectance indices: A review https://www.sciencedirect.com/science/article/abs/pii/S1470160X18308215</p>
+<section id="def-get_list_of_flight_lines-p-debugfalse" class="level4">
+<h4 class="anchored" data-anchor-id="def-get_list_of_flight_lines-p-debugfalse">def get_list_of_flight_lines( p, debug=False):</h4>
+<hr>
+</section>
+</section>
+<section id="get_list_of_flight_lines" class="level3">
+<h3 class="anchored" data-anchor-id="get_list_of_flight_lines">get_list_of_flight_lines</h3>
+<blockquote class="blockquote">
+<pre><code> get_list_of_flight_lines (p, debug=False)</code></pre>
+</blockquote>
+<p>Returns a list of flightline subdirs on path p.</p>
+<p>Test get_list_of_flight_lines().</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">Testing: get_list_of_flight_lines(p)'</span>)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>test_path_list <span class="op">=</span> get_list_of_flight_lines( mission_folder )</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>display(test_path_list[<span class="dv">0</span>:<span class="dv">5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Testing: get_list_of_flight_lines(p)</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>['/mnt/s/2021-0717-HAB-Spec-Tampa-Bay-PIE/2021-0717-HAB-pie/141625',
+ '/mnt/s/2021-0717-HAB-Spec-Tampa-Bay-PIE/2021-0717-HAB-pie/142250',
+ '/mnt/s/2021-0717-HAB-Spec-Tampa-Bay-PIE/2021-0717-HAB-pie/143534',
+ '/mnt/s/2021-0717-HAB-Spec-Tampa-Bay-PIE/2021-0717-HAB-pie/144030',
+ '/mnt/s/2021-0717-HAB-Spec-Tampa-Bay-PIE/2021-0717-HAB-pie/144505']</code></pre>
+</div>
+</div>
+<section id="def-get_list_of_hab_files-p-subdir-ext-debugfalse" class="level4">
+<h4 class="anchored" data-anchor-id="def-get_list_of_hab_files-p-subdir-ext-debugfalse">def get_list_of_hab_files( p, subdir=’‘, ext=’’, debug=False):</h4>
+<hr>
+</section>
+</section>
+<section id="get_list_of_hab_files" class="level3">
+<h3 class="anchored" data-anchor-id="get_list_of_hab_files">get_list_of_hab_files</h3>
+<blockquote class="blockquote">
+<pre><code> get_list_of_hab_files (p, subdir='', ext='', debug=False)</code></pre>
+</blockquote>
+<p>Returns a list of hab files in p/subdir with the specified file extension.</p>
+<p>Parameters: p : str subdir : str Default = ’’ ext : str Default = ’’</p>
+<p>Test get_list_of_hab_files().</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co">#mission_folder = '/mnt/s/2021-0717-HAB-Spec-Tampa-Bay-PIE/2021-0717-HAB-pie/'</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">Testing: get_list_of_hab_files()'</span>)</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>flight_line_list <span class="op">=</span> get_list_of_flight_lines(mission_folder)</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>rv_get_list_of_hab_files <span class="op">=</span> get_list_of_hab_files( flight_line_list[<span class="dv">1</span>], subdir<span class="op">=</span><span class="st">'hab_spectra'</span>, ext<span class="op">=</span><span class="st">'json'</span>)</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>display(rv_get_list_of_hab_files[<span class="dv">0</span>:<span class="dv">5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Testing: get_list_of_hab_files()</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>['/mnt/s/2021-0717-HAB-Spec-Tampa-Bay-PIE/2021-0717-HAB-pie/142250/hab_spectra/2021-0717-142251-046414-spec.json',
+ '/mnt/s/2021-0717-HAB-Spec-Tampa-Bay-PIE/2021-0717-HAB-pie/142250/hab_spectra/2021-0717-142251-761101-spec.json',
+ '/mnt/s/2021-0717-HAB-Spec-Tampa-Bay-PIE/2021-0717-HAB-pie/142250/hab_spectra/2021-0717-142252-464391-spec.json',
+ '/mnt/s/2021-0717-HAB-Spec-Tampa-Bay-PIE/2021-0717-HAB-pie/142250/hab_spectra/2021-0717-142253-154079-spec.json',
+ '/mnt/s/2021-0717-HAB-Spec-Tampa-Bay-PIE/2021-0717-HAB-pie/142250/hab_spectra/2021-0717-142300-757855-spec.json']</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#ths = HyperSpec()</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span>now_utc()<span class="sc">}</span><span class="ss">: HyperSpectral functions loaded.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>2023-0618 13:49:24: HyperSpectral functions loaded.</code></pre>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

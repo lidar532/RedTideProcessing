@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "RedTideProcessing"
+  site-url: "https://lidar532.github.io/RedTideProcessing"
+  description: "Red Tide Processing for HABSpec"
+  repo-branch: main
+  repo-url: "https://github.com/lidar532/RedTideProcessing"
